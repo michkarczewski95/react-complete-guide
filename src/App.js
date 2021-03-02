@@ -9,8 +9,11 @@ const [ personsState, setPersonsState ] = useState({
 { name: 'Luiza', age: 24 },
 { name: 'Odin', age: 1 }
   ], 
-  otherState:'some othe value'
  });
+
+ const[otherState, setOtherState]= useState('some other value');
+
+ console.log(personsState, otherState);
  const switchNameHandler = () => {
    //console.los('Was clicked!');
    //DON'T DO THIS: this.state.persons[0].name = "Michael";
