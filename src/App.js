@@ -9,7 +9,8 @@ state= {
 { name: 'Luiza', age: 24 },
 { name: 'Odin', age: 1 }
   ], 
-  otherState:'some other value'
+  otherState:'some other value',
+  showPersons: false
  }
 
  switchNameHandler = (newName) => {
@@ -32,6 +33,11 @@ state= {
      ]
     })
   }
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+
+  }
 
 render () {
 const style= {
@@ -48,7 +54,10 @@ cursor:'pointer'
    <p>This is really working!</p>
    <button 
    style={style}
-   onClick={() => this.switchNameHandler('Michal!!')}>Switch Name</button>
+   onClick={this.togglePersonsHandler}>Toggle Persons </button>
+   {
+   this.state.showPersons === true ? 
+     <div>
    <Person
       name={this.state.persons[0].name} 
       age={this.state.persons[0].age} />
@@ -60,6 +69,8 @@ cursor:'pointer'
    <Person
       name={this.state.persons[2].name} 
       age={this.state.persons[2].age} />
+      </div> : null
+}
       </div>
     );
     //return React.createElement('div',{className:'App'}, React.createElement('h1',null, 'Does this work now?'))
